@@ -843,6 +843,20 @@ button{
     background-color: var(--black);
 }
 
+/* footer */
+.footer{
+    align-items: center;
+}
+.footer .footer-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer .footer-text span{
+    padding-top: 30px;
+    align-items: center;
+}
+
 /*responsive*/
 @media(max-width:991px){
     .container{
