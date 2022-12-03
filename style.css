@@ -45,6 +45,7 @@ body{
     font-weight: 300;
     color: var(--blue-dark);
     line-height: 1.5;
+    z-index: -10;
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
     padding: 35px 15px;
