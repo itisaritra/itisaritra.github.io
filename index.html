@@ -14,7 +14,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
     </head>
 
-    <body oncontextmenu="return false" onkeydown="return false;" onmousedown="return false;">
+    <body>
 
         <!--page loader start
         <div class="page-loader">
@@ -355,19 +355,19 @@
                     </div>
                     <div class="row">
                         <div class="contact-form">
-                            <form>
+                            <form action="https://formspree.io/f/xzbwllqw" method="POST">
                                 <div class="row">
                                     <div class="input-group">
-                                        <input type="text" placeholder="Name" class="input-control" required>
+                                        <input type="text" placeholder="Name" class="input-control" name="name" required>
                                     </div>
                                     <div class="input-group">
-                                        <input type="text" placeholder="Email" class="input-control" required>
+                                        <input type="text" placeholder="Email" class="input-control" name="email" required>
                                     </div>
                                     <div class="input-group">
-                                        <input type="text" placeholder="Subject" class="input-control" required>
+                                        <input type="text" placeholder="Subject" class="input-control" name="subject" required>
                                     </div>
                                     <div class="input-group">
-                                        <textarea placeholder="Message" class="input-control" required></textarea>
+                                        <textarea placeholder="Message" class="input-control" name="message" required></textarea>
                                     </div>
                                     <div class="submit-btn">
                                         <button type="submit" class="btn">Send Message</button>
