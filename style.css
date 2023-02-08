@@ -38,7 +38,7 @@
 }
 body{
     min-height: 100vh;
-    background-image: linear-gradient(to bottom right, var(--grey), var(--black));
+    background-image: url(bggrey3.png);
     background-attachment: fixed;
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
@@ -849,6 +849,7 @@ button{
     align-items: center;
 }
 .footer .footer-text{
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
