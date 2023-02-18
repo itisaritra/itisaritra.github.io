@@ -38,7 +38,7 @@
 }
 body{
     min-height: 100vh;
-    background-image: url(bggrey2.png);
+    background-image: url(bggrey2.webp);
     /*linear-gradient(to bottom right, var(--grey), var(--black))*/
     background-attachment: fixed;
     font-size: 16px;
