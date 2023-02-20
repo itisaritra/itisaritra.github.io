@@ -38,7 +38,7 @@
 }
 body{
     min-height: 100vh;
-    background-image: url(bggrey2.webp);
+    background-image: url(Forest.png);
     /*linear-gradient(to bottom right, var(--grey), var(--black))*/
     background-attachment: fixed;
     font-size: 16px;
@@ -695,11 +695,12 @@ button{
     border-radius: 10px;
 }
 .portfolio-item-thumbnail img{
+    height: 185px;
     width: 100%;
     border-radius: 10px;
 }
 .portfolio-item h3{
-    font-size: 20px;
+    font-size: 15px;
     text-transform: capitalize;
     margin: 20px 0;
 }
