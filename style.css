@@ -1,933 +1,577 @@
-/*------------fonts-----------*/
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text&family=Poppins:wght@200;300;400;500;600;700&display=swap');
-
-
-
-
-/*------------variables-----------*/
-:root{
-    --main-color: #e02f6b;
-    --blue: #0000ff;
-    --blue-dark: #18293c;
-    --orange: #ffa500;
-    --green-yellow: #cddc39;
-    --pink-light: #efa2b4;
-    --cyan-light: #aef1ee;
-    --white: #ffffff;
-    --grey: #ababab;
-    --dark-grey: #676565;
-    --black: #111111;
-    --white-alpha-40: rgba(255, 255, 255, 0.40);
-    --white-alpha-25: rgba(255, 255, 255, 0.25);
-    --backdrop-filter-blur: blur(5px);
-}
-
-
-
-
-/*------------global settings-----------*/
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    outline: none;
-}
-::before, 
-::after{
-    box-sizing: border-box;
-}
-body{
-    min-height: 100vh;
-    background-image: url(Forest.png);
-    /*linear-gradient(to bottom right, var(--grey), var(--black))*/
-    background-attachment: fixed;
-    font-size: 16px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    color: var(--blue-dark);
-    line-height: 1.5;
-    overflow-x: hidden;
-    z-index: -10;
-    -webkit-tap-highlight-color: transparent;
-    padding: 35px 15px;
-}
-body.hide-scrolling{
-    overflow-y: hidden;
-}
-body::before{
-    content: '';
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background-color: var(--white);
-    z-index: -10;
-    opacity: 0.12;
-}
-a{
-    text-decoration: none;
-}
-h1, h2{
-    font-weight: 600;
-}
-h3, h4, h5, h6{
-    font-weight: 500;
-}
-img{
-    max-width: 100%;
-    vertical-align: middle;
-}
-ul{
-    list-style: none;
-}
-section{
-    background-color: var(--white-alpha-25);
-    border: 1px solid var(--white-alpha-40);
-    min-height: calc(100vh - 70px);
-    border-radius: 30px;
-    backdrop-filter: var(--backdrop-filter-blur);
-    display: none;
-}
-section.active{
-    display: block;
-    animation: fadeIn 0.5s ease-in-out forwards;
-}
-section.fade-out{
-    animation: fadeOut 0.5s ease-in-out forwards;
-}
-.main{
-    max-width: 1200px;
-    margin: auto;
-    transition: all 0.5s ease-in-out;
-    position: relative;
-}
-.main.fade-out{
-    opacity: 0;
-}
-.container{
-    padding: 0 40px;
-    width: 100%;
-}
-.row{
-    display: flex;
-    flex-wrap: wrap;
-}
-.align-items-center{
-    align-items: center;
-}
-.hidden{
-    display: none !important;
-}
-
-/*section title*/
-.sec-padding{
-    padding: 80px 0;
+<!DOCTYPE html>
+<html lang="en" oncontextmenu="return false">
     
-}
-.flex-end{
-    justify-content: flex-end;
-}
-.section-title{
-    padding: 0 15px;
-    width: 100%;
-    text-align: center;
-}
-.section-title h2{
-    font-size: 40px;
-    text-transform: capitalize;
-    margin-bottom: 40px;
-}
+    <head>
+        <title>Aritra Ghosh</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/x-icon" href="icon_square.jpeg">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <script src="https://kit.fontawesome.com/a94023e03b.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    </head>
 
+    <body>
 
-/*custom scrollbar*/
-::-webkit-scrollbar{
-    width: 5px;
-}
-::-webkit-scrollbar-track{
-    background-color: var(--white);
-}
-::-webkit-scrollbar-thumb{
-    background-color: var(--black);
-}
+        <!--page loader start-->
+        <div class="page-loader">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <!--- page loader end-->
 
+        <!--Background Circles Start-->
+        <div class="bg-circles">
+            <div class="circle-1"></div>
+            <div class="circle-2"></div>
+            <div class="circle-3"></div>
+            <div class="circle-4"></div>
+        </div>
+        <!--Background Circles End-->
 
+        <!--Overlay start-->
+        <div class="overlay">
+        </div>
+        <!--overlay end-->
 
-/* buttons */
-button{
-    font-family: inherit;
-    user-select: none;
-}
-.btn{
-    line-height: 1.5;
-    background-color: var(--dark-grey);
-    border: 1px solid var(--white-alpha-40);
-    padding: 10px 28px;
-    display: inline-block;
-    border-radius: 30px;
-    color: var(--white);
-    font-weight: 500;
-    text-transform: capitalize;
-    font-family: inherit;
-    font-size: 16px;
-    cursor: pointer;
-    user-select: none;
-    position: relative;
-    overflow: hidden;
-    vertical-align: middle;
-    transform: color 0.3s ease;
-}
-.btn::before{
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 0%;
-    background-color: var(--white);
-    z-index: -1;
-    transition: width 0.3s ease;
-}
-.btn:hover::before{
-    width: 100%;
-}
-.btn:hover{
-    background-color: var(--white-alpha-25);
-    color: var(--black);
-}
+        
+        <!--Main Start-->
+        <div class="main hidden">
 
-/*Animation Keyframes*/
-@keyframes fadeIn{
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
-}
-@keyframes fadeOut{
-    0%{
-        opacity: 1;
-    }
-    100%{
-        opacity: 0;
-    }
-}
-@keyframes zoomInOut{
-    0%,100%{
-        transform: scale(0.5);
-    }
-    50%{
-        transform: scale(1);
-    }
-}
-@keyframes bounceTop{
-    0%,100%{
-        transform: translateY(-50px);
-    }
-    50%{
-        transform: translateY(0px);
-    }
-}
-@keyframes spin{
-    0%{
-        transform: rotate(0deg);
-    }
-    100%{
-        transform: rotate(360deg);
-    }
-}
+            <!--header start-->
+            <header class="header">
+                <div class="container">
+                    <div class="row flex-end">
+                        <button type="button" class="nav-toggler">
+                            <span></span>
+                        </button>
+                        <nav class="nav">
+                            <div class="nav-inner">
+                                <ul>
+                                    <li><a href="#home" class="nav-item link-item">Home</a></li>
+                                    <li><a href="#about" class="nav-item link-item">About</a></li>
+                                    <li><a href="#portfolio" class="nav-item link-item">Portfolio</a></li>
+                                    <li><a href="#contact" class="nav-item link-item">Contact</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <!--header end-->
 
-/* background circles */
-.bg-circles{
-    position: fixed;
-    top: 0;
-    height: 100%;
-    max-width: 1200px;
-    width: calc(100% - 30px);
-    left: 50%;
-    transform: translateX(-50%);
-}
-.bg-circles div{
-    position: absolute;
-    border-radius: 50%;
-}
-.bg-circles .circle-1{
-    height: 60px;
-    width: 60px;
-    background-color: var(--dark-grey);
-    left: 5%;
-    top: 10%;
-    opacity: 0.3;
-    animation: zoomInOut 8s linear infinite;
-}
-.bg-circles .circle-2{
-    height: 80px;
-    width: 80px;
-    background-color: var(--black);
-    left: 40%;
-    top: 50%;
-    opacity: 0.4;
-    animation: bounceTop 5s ease-in-out infinite;
-}
-.bg-circles .circle-3{
-    height: 120px;
-    width: 120px;
-    background-color: var(--white);
-    top: 40%;
-    right: -60px;
-    opacity: 0.6;
-}
-.bg-circles .circle-4{
-    height: 50px;
-    width: 50px;
-    background-color: #18293c;
-    top: 80%;
-    left: -30px;
-    opacity: 0.6;
-}
+            <!--Home Start-->
+            <section class="home-section align-items-center" id="home">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="home-text">
+                            <p>Hello, I am</p>
+                            <h1>Aritra Ghosh</h1>
+                            <h2>and I'm a <span class="typing"></span></h2>
+                            <a href="#about" class="btn link-item">More About Me</a>
+                            <a href="#portfolio" class="btn link-item">Portfolio</a>
+                            <a href="https://www.fiverr.com/aritrag" class="btn link-item">Hire Me</a>
+                            <div class="social-links">
+                                <a href="https://www.linkedin.com/in/aritraghosh1905/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://github.com/TheCleverIdiott" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="https://twitter.com/AritraG_?t=d9VGV6i6XvkN2XAbL32r4g&s=09" target="_blank"><i class="fab fa-twitter"></i></a>
+                                <a href="https://the-clever-idiot.medium.com/" target="_blank"><i class="fab fa-medium"></i></a>
+                            </div>
+                        </div>
+                        <div class="home-img">
+                            <div class="img-box">
+                                <img src="cover pfp.png" alt="profile-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--Home End-->
 
+            <!--About Start-->
+            <section class="about-section sec-padding" id="about">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title">
+                            <h2>About Me</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="about-img">
+                            <div class="img-box">
+                                <img src="cover pfp.png" alt="about-pfp">
+                            </div>
+                        </div>
+                        <div class="about-text">
+                            <p>Hi! My name is Aritra.</p>
+                            <br>
+                            <p>Currently a Computer Science Sophomore with a passion for technology and a drive to solve complex problems. Seeking opportunities to gain hands-on experience and contribute to the tech industry.</p>
+                            <p>Skilled in programming languages such as Python, C++ and React with experience in developing Web Development and ML projects. Proficienct in graphic design, with a strong focus on creating visually appealing designs. Adept at photo and video editing, utilizing industry-leading software to enhance the quality and impact of images and videos.</p>
+                            <p></p>
+                            <p>Strong communication and collaboration skills, with a desire to continuously learn and grow in a dynamic and fast-paced environment.</p>
+                            
+                            <p style="margin-top: 10px;"><b>PS:</b> I love cats :)</p>
+                            <br>
+                            <h3>Skills</h3>
+                            <div class="skills">
+                                <div class="skill-item">Frontend Web Development</div>
+                                <div class="skill-item">Graphic Designing</div>
+                                <div class="skill-item">Photo and Video Editing</div>
+                                <div class="skill-item">AI/ML</div>
+                                <div class="skill-item">Data Science & Data Learning</div>
+                                <div class="skill-item">Python</div>
+                                <div class="skill-item">C</div>
+                                <div class="skill-item">C++</div>
+                            </div>
 
-/*overlay*/
-.overlay{
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background-color: transparent;
-    z-index: 200;
-    visibility: hidden;
-}
-.overlay.active{
-    visibility: visible;
-}
+                            <div class="about-tabs">
+                                <button type="button" class="tab-item active" data-target="#experience">Experience</button>
+                                <button type="button" class="tab-item" data-target="#education">Education</button>
+                            </div>
 
-/*page loader
-.page-loader{
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 999;
-    background-color: var(--white-alpha-25);
-    backdrop-filter: var(--backdrop-filter-blur);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.6s ease;
-}
-.page-loader.fade-out{
-    opacity: 0;
-}
-.page-loader div{
-    border: 2px solid transparent;
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.6;
-    border-top-color: transparent !important;
-    border-bottom-color: transparent !important;
-    animation: spin 1s linear infinite;
-}
-.page-loader div:nth-child(1){
-    height: 60px;
-    width: 60px;
-    border-color: var(--black);
-}
-.page-loader div:nth-child(2){
-    height: 45px;
-    width: 45px;
-    border-color: var(--blue-dark);
-    animation-duration: 1.2s;
-}
-.page-loader div:nth-child(3){
-    height: 30px;
-    width: 30px;
-    border-color: var(--white);
-}*/
+                            <!--Education Section start-->
+                            <div class="tab-content active" id="experience">
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <span class="date">2023 - Present</span>
+                                        <h4>ML Intern - <span>Corizo</span></h4>
+                                        <p>Developed predictive models using machine learning algorithms and tools such as TensorFlow, Keras, and PyTorch.
+                                        Analyzed and processed large volumes of data using Python, R, and Java. Skilled in programming languages such as Python, 
+                                        R, and Java, and proficient in data analysis and visualization tools such as NumPy, Pandas, and Matplotlib.
+                                        </p>
+                                    </div>                                    
+                                    <div class="timeline-item">
+                                        <span class="date">Dec 2022 - Jan 2023</span>
+                                        <h4>Data Science Intern - <span>LGM Solutions</span></h4>
+                                        <p>Performing data and SQL validation for quality control and analyzed data for anomalies and data confidence.
+                                        Involved in low level Design for the scripts of the database sequences, contraints, triggers and stored procedures.</p>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <span class="date">2021 - Present</span>
+                                        <h4>Web Developer and Designer - <span>Freelance</span></h4>
+                                        <p>Worked on web development projects using HTML, CSS, JavaScript, and PHP. Proficienct in React.js, developed and 
+                                        maintained websites for clients, including e-commerce websites and CMS-based websites. Used various web development 
+                                        frameworks and content management systems, such as WordPress, Drupal, and Magento.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Education Section end-->
 
-/* header */
-.header{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-    padding: 20px 0 0;
-}
-.header.active{
-    position: fixed;
-    top: 35px;
-    padding: 20px 15px;
-}
-.header.active .container{
-    max-width: 1200px;
-    margin: auto;
-}
-.header .nav-toggler{
-    width: 50px;
-    height: 50px;
-    border: none;
-    cursor: pointer;
-    border-radius: 50%;
-    background-color: var(--white-alpha-25);
-    border: 1px solid var(--white-alpha-40);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 15px;
-    z-index: 1;
-    transition: opacity 0.5s ease-in-out;
-}
-.header .nav-toggler.hide{
-    opacity: 0;
-    transition: none;
-}
-.header .nav-toggler span{
-    height: 2px;
-    width: 24px;
-    background-color: var(--black);
-    position: relative;
-    transition: background-color 0.3s ease;
-}
-.header.active .nav-toggler span{
-    background-color: transparent;
-}
-.header .nav-toggler span::before,
-.header .nav-toggler span::after{
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--black);
-    transition: all 0.3s ease;
-}
-.header .nav-toggler span::before{
-    left: 0;
-    transform: translateY(-8px);
-}
-.header.active .nav-toggler span::before{
-    transform: rotate(45deg);
-}
-.header .nav-toggler span::after{
-    right: 0;
-    transform: translateY(8px);
-}
-.header.active .nav-toggler span::after{
-    transform: rotate(-45deg);
-}
-.header:not(.active) .nav-toggler:hover span::before,
-.header:not(.active) .nav-toggler:hover span::after{
-    width: 50%;
-}
-.header .nav{
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    padding: 35px 15px;
-    overflow-y: auto;
-    visibility: hidden;
-}
-.header.active .nav{
-    visibility: visible;
-}
-.header .nav-inner{
-    min-height: calc(100vh -70px);
-    max-width: 1200px;
-    margin: auto;
-    background-color: var(--white-alpha-25);
-    border: 1px solid var(--white-alpha-40);
-    backdrop-filter: var(--backdrop-filter-blur);
-    padding: 50px 0;
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: all 0.5s ease;
-}
-.header.active .nav-inner{
-    opacity: 1;
-}
-.header .nav-inner ul li{
-    text-align: center;
-}
-.header .nav-inner ul li a{
-    font-size: 40px;
-    text-transform: capitalize;
-    color: var(--blue-dark);
-    display: block;
-    font-weight: 500;
-    padding: 8px 15px;
-    transition: color 0.3s ease;
-    position: relative;
-}
-.header .nav-inner ul li a::before{
-    content: '';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    height: 50%;
-    width: 0%;
-    background-color: var(--white-alpha-25);
-    z-index: -1;
-    transition: width 0.5s ease;
-}
-.header .nav-inner ul li a:hover::before{
-    width: 100%;
-}
-.header .nav-inner ul li a:hover{
-    color: var(--white);
-}
+                            <!--Experience Section start-->
+                            <div class="tab-content" id="education">
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <span class="date">2021 - 2025</span>
+                                        <h4>Bachelor of Technology - <span>IEM, Kolkata</span></h4>
+                                        <p>A B.Tech in Computer Science and Engineerig from Institute of Engineering and Management, Kolkata. <b>CGPA 9.2</b></p>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <span class="date">2019 - 2021</span>
+                                        <h4>AISSCE - <span>DPS Ruby Park, Kolkata</span></h4>
+                                        <p>10+2 from Delhi Public School, Ruby Park, Kolkata. <b>Grade 92%</b></p>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <span class="date">2021 - 2025</span>
+                                        <h4>AISSE - <span>SPHS, Kolkata</span></h4>
+                                        <p>Class 10th from South Point High School, Kolkata. <b>Grade 95%</b></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Experience Section end-->
 
-/*------------home section-----------*/
-.home-section{
-    padding: 120px 0;
-}
-.home-section.active{
-    display: flex;
-}
-.home-text p{
-    font-size: 25px;
-}
-.home-text h1{
-    font-size: 55px;
-    text-transform: capitalize;
-}
-.home-text h2{
-    font-size: 30px;
-    font-weight: 300;
-    text-transform: capitalize;
-    margin: 0 0 30px;
-}
-.home-text,
-.home-img{
-    width: 50%;
-    padding: 15px;
-    
-}
-.home-text .btn{
-    margin: 0 15px 15px 0;
-}
-.home-img .img-box{
-    max-width: 360px;
-    background-color: var(--white-alpha-25);
-    border-radius: 50%;
-    border: 8px solid var(--white-alpha-25);
-    margin: auto;
-}
-.home-img .img-box img{
-    width: 100%;
-    border-radius: 50%;
-}
+                            <a href="https://drive.google.com/file/d/11PmEFGfsOmzxwwNtX1jsk-9uXOgde6nC/view?usp=sharing" target="_blank" class="btn">Download Resume</a>
+                            <a href="#contact" class="btn link-item">Contact Me</a>
 
-.home-text .social-links a{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    width: 40px;
-    background-color: var(--white-alpha-25);
-    border: 1px solid var(--white-alpha-40);
-    color: var(--black);
-    border-radius: 50%;
-    margin-top: 30px;
-    margin-right: 6px;
-    margin-left: 2px;
-    transition: all 0.3s ease;
-}
-.home-text .social-links a:hover{
-    color: var(--white);
-    background-color: var(--black);
-}
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--About End-->
 
-/* About Section */
-.about-img{
-    width: 30%;
-    padding: 0 15px;
-}
-.about-text{
-    width: 70%;
-    padding: 0 15px;
-}
-.about-img .img-box{
-    background-color: var(--white-alpha-25);
-    max-width: 380px;
-    border: 1px solid var(--white-alpha-40);
-    margin: auto;
-    border-radius: 10px;
-}
-.about-img .img-box img{
-    width: 100%;
-}
-.about-text h3{
-    text-transform: capitalize;
-    font-size: 20px;
-    margin: 20px 0;
-}
-.about-text .skills{
-    display: flex;
-    flex-wrap: wrap;
-}
-.about-text .skill-item{
-    background-color: var(--white-alpha-25);
-    border: 1px solid var(--white-alpha-40);
-    padding: 5px 15px;
-    text-transform: capitalize;
-    margin: 0 10px 10px 0;
-    border-radius: 2px;
-}
-.about-tabs{
-    margin-top: 20px;
-}
-.about-tabs .tab-item{
-    padding: 2px 0;
-    background-color: transparent;
-    border: none;
-    text-transform: capitalize;
-    display: inline-block;
-    color: var(--blue-dark);
-    font-size: 20px;
-    cursor: pointer;
-    font-weight: 500;
-    margin: 0 30px 0 0;
-    position: relative;
-    opacity: 0.5;
-    transition: all 0.3s ease;
-}
-.about-tabs .tab-item:last-child{
-    margin: 0;
-}
-.about-tabs .tab-item::before{
-    content: '';
-    position:absolute;
-    left: 0;
-    bottom: 0;
-    width: 0%;
-    height: 1px;
-    background-color: var(--blue-dark);
-    transition: width 0.3s ease;
-}
-.about-tabs .tab-item:hover::before{
-    width: 100%;
-}
-.about-tabs .tab-item.active::before{
-    width: 100%;
-    background-color: var(--black);
-}
-.about-tabs .tab-item.active{
-    color: var(--black);
-    opacity: 1;
-    cursor: auto;
-}
-.about-text .timeline{
-    position: relative;
-}
-.about-text .timeline::before{
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 1px;
-    top: 0;
-    left: 5px;
-    background-color: var(--black);
-}
-.about-text .tab-content{
-    padding: 40px 0;
-    display: none;
-}
-.about-text .tab-content.active{
-    display: block;
-}
-.about-text .timeline-item{
-    margin-bottom: 30px;
-    position: relative;
-    padding: 10px 0 0  40px;
+            <!--Portfolio Section start-->
+            <section class="portfolio-section sec-padding" id="portfolio">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title">
+                            <h2>Recent Works</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!--Portfolio Item 1 Start-->
+                        <div class="portfolio-item">
+                            <div class="portfolio-item-thumbnail">
+                                <img src="dashboard.png" alt="dash">
+                            </div>
+                            <h2 style="margin-top: 2px ;" class="portfolio-item-description">one.edu</h2>
+                            <h3 style="margin-top: 2px ;" class="portfolio-item-title">Academic Management</h3>
+                            <button type="button" class="btn view-project-btn">View Project</button>
+                            <div class="portfolio-item-details">
+                                <div class="description">
+                                    <p>On a daily basis, students encounter various challenges that can have a negative impact on
+                                        their academic performance likrdisorganization, limited
+                                        access to study resources, lack of motivation, and difficulty understanding course materials.
+                                        One.edu is a platform that can help students better manage their studies, by providing them rewards and incentives for
+                                        doing tasks/assignments on time, attending classes regularly and solving doubts of fellow batchmates.</p>
+                                </div>
+                                <div class="general-info">
+                                    <ul>
+                                        <li>Created On - <span>8th February 2023</span></li>
+                                        <li>Technologies Used - <span>React, Node, HTML, CSS, JavaScript, Php, Netlify</span></li>
+                                        <li>View Project - <span><a href="https://majestic-sable-e8edc3.netlify.app/" target="_blank">one.edu</a></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Portfolio Item 1 End-->
 
-}
-.about-text .timeline-item::before{
-    content: '';
-    position: absolute;
-    height: 11px;
-    width: 11px;
-    background-color: var(--black);
-    left: 0;
-    top: 16px;
-    border-radius: 50%;
-}
-.about-text .timeline-item:last-child{
-    margin-bottom: 0;
-}
-.about-text .timeline-item .date{
-    display: block;
-    color: var(--black);
-    font-weight: 400;
-    margin: 0 0 10px;
-}
-.about-text .timeline-item h4{
-    font-size: 18px;
-    text-transform: capitalize;
-    margin: 0 0 10px;
-}
-.about-text .timeline-item h4 span{
-    font-weight: 400;
-}
-.about-text .btn{
-    margin: 0 15px 15px 0;
-}
+                        <!--Portfolio Item 2 Start-->
+                        <div class="portfolio-item">
+                            <div class="portfolio-item-thumbnail">
+                                <img src="senmeterlogo.jpeg" alt="Senmeter">
+                            </div>
+                            <h2 style="margin-top: 2px ;" class="portfolio-item-description">Senmeter</h2>
+                            <h3 style="margin-top: 2px ;" class="portfolio-item-title">Depression Analysis Tool</h3>
+                            <button type="button" class="btn view-project-btn">View Project</button>
+                            <div class="portfolio-item-details">
+                                <div class="description">
+                                    <p>A tool that uses AI to detect depression from the user's online presence.</p>
+                                </div>
+                                <div class="general-info">
+                                    <ul>
+                                        <li>Created On - <span>4th December 2021</span></li>
+                                        <li>Technologies Used - <span>Python, JuputerNotebook, Pandas, Wordblob, Seaborn, Tensorflow, Keras</span></li>
+                                        <li>View Repository - <span><a href="https://github.com/TheCleverIdiott/SENMETER" target="_blank">senmeter.com</a></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Portfolio Item 2 End-->                        
 
-/* portfolio section */
-.portfolio-section{
-    padding-bottom: 50px;
-}
-.portfolio-item{
-    width: calc((100% / 3) - 30px);
-    margin: 0 15px 30px;
-}
-.portfolio-item-thumbnail{
-    padding: 10px;
-    background-color: var(--white-alpha-25);
-    border: 1px solid var(--white-alpha-40);
-    border-radius: 10px;
-}
-.portfolio-item-thumbnail img{
-    height: 185px;
-    width: 100%;
-    border-radius: 10px;
-}
-.portfolio-item h3{
-    font-size: 15px;
-    text-transform: capitalize;
-    margin: 20px 0;
-}
-.portfolio-item-details{
-    display: none;
-}
+                        <!--Portfolio Item 3 Start-->
+                        <div class="portfolio-item">
+                            <div class="portfolio-item-thumbnail">
+                                <img src="quora-clone.png" alt="dash">
+                            </div>
+                            <h2 style="margin-top: 2px ;" class="portfolio-item-description">RoundTable</h2>
+                            <h3 style="margin-top: 2px ;" class="portfolio-item-title">Discussion Forum</h3>
+                            <button type="button" class="btn view-project-btn">View Project</button>
+                            <div class="portfolio-item-details">
+                                <div class="description">
+                                    <p>This is a question-and-answer website where users can ask questions, answer questions, and interact with other users to share 
+                                        knowledge and information on a wide range of topics. Users can create an account and post questions on any topic they're interested in, 
+                                        and other users can answer those questions or provide additional information. In addition to asking and answering questions, users can 
+                                        also upvote or downvote answers based on their relevance and accuracy, and can comment on and discuss answers with other users.
+                                        The goal is to create a platform that fosters knowledge sharing and learning, and to connect people with the information and insights they 
+                                        need to make better decisions in their personal and professional lives.</p>
+                                </div>
+                                <div class="general-info">
+                                    <ul>
+                                        <li>Created On - <span>27th January 2023</span></li>
+                                        <li>Technologies Used - <span>React, Node, Nodemon, MongoDB, Postman, HTML, CSS, JavaScript, Php, Netlify</span></li>
+                                        <li>View Project - <span><a href="https://qclone.pages.dev/" target="_blank">doubt.clear</a></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Portfolio Item 3 End-->
 
-/* portfolio popup */
-.portfolio-popup{
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 200;
-    visibility: hidden;
-}
-.portfolio-popup.open{
-    visibility: visible;
-    overflow-y: auto;
-}
-.pp-inner{
-    min-height: 100vh;
-    padding: 40px 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.pp-content{
-    background-color: var(--white-alpha-25);
-    padding: 30px;
-    border-radius: 30px;
-    max-width: 900px;
-    width: 100%;
-    border: 1px solid var(--white-alpha-40);
-    backdrop-filter: var(--backdrop-filter-blur);
-    opacity: 0;
-    transform: scale(0.9);
-}
-.portfolio-popup.open .pp-content{
-    opacity: 1;
-    transform: scale(1);
-    transition: all 0.5s ease;
-}
-.pp-header{
-    position: relative;
-}
-.pp-header .btn{
-    height: 40px;
-    width: 40px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    right: -40px;
-    top: -40px;
-}
-.pp-thumbnail img{
-    border-radius: 10px;
-}
-.pp-header h3{
-    font-size: 25px;
-    text-transform: capitalize;
-    margin: 20px 0 15px;
-}
-.pp-body .description{
-    margin-bottom: 20px;
-}
-.pp-body .general-info li{
-    margin-bottom: 10px;
-    font-weight: 500;
-    text-transform: capitalize;
-}
-.pp-body .general-info li span{
-    font-weight: 300;
-}
-.pp-body .general-info li a{
-    text-transform: lowercase;
-}
+                        <!--Portfolio Item 4 Start-->
+                        <div class="portfolio-item">
+                            <div class="portfolio-item-thumbnail">
+                                <img src="thefclub.png" alt="theFclub">
+                            </div>
+                            <h2 style="margin-top: 2px ;" class="portfolio-item-description">The Fit Club</h2>
+                            <h3 style="margin-top: 2px ;" class="portfolio-item-title">Fitness Tracking web-app</h3>
+                            <button type="button" class="btn view-project-btn">View Project</button>
+                            <div class="portfolio-item-details">
+                                <div class="description">
+                                    <p>Designed to help users monitor and manage their physical activity and health-related metrics. The user can set specific fitness goals, 
+                                        such as running a certain distance, burning a certain number of calories, or working out for a certain amount of time. The app can 
+                                        provide users with workout suggestions or exercises based on their fitness level and goals. The app allows users to share their 
+                                        achievements and progress on social media, or to connect with friends and other users for support and motivation.</p>
+                                </div>
+                                <div class="general-info">
+                                    <ul>
+                                        <li>Created On - <span>29th January 2023</span></li>
+                                        <li>Technologies Used - <span>React, Node.js, Netlify, Docker, Git, Postman, Rest API, MongoDB Compass, HTML/CSS, JavaScript,</span></li>
+                                        <li>Live Demo - <span><a href="https://teamfuryus.github.io/thefitclub/" target="_blank">thefitclub.com</a></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Portfolio Item 4 End-->   
 
-/* contact section */
-.contact-form, 
-.contact-info{
-    width: 50%;
-    padding: 0 15px;
-}
-.contact-form .input-group{
-    width: 100%;
-    margin-bottom: 30px;
-}
-.contact-form .input-control::placeholder{
-    color: var(--blue-dark);
-    opacity: 0.8;
-    font-weight: 300;
-}
-.contact-form .input-control{
-    display: block;
-    width: 100%;
-    height: 50px;
-    border-radius: 25px;
-    border: none;
-    font-family: inherit;
-    font-weight: 400;
-    font-size: 16px;
-    background-color: var(--white-alpha-25);
-    padding: 0 20px;
-    color: var(--blue-dark);
-    border: 1px solid transparent;
-    transition: border-color 0.3s ease;
-}
-.contact-form .input-control:focus{
-    border-color: var(--white-alpha-40);
-}
-.contact-form textarea.input-control{
-    height: 120px;
-    resize: none;
-    padding-top: 15px;
-}
-.contact-info-item{
-    margin: 0 0 30px;
-    padding: 0 0 0 20px;
-}
-.contact-info-item h3{
-    font-size: 20px;
-    text-transform: capitalize;
-    margin: 0 0 5px;
-}
-.contact-info-item .social-links a{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    width: 40px;
-    background-color: var(--white-alpha-25);
-    border: 1px solid var(--white-alpha-40);
-    color: var(--black);
-    border-radius: 50%;
-    margin: 6px 4px 0 0;
-    transition: all 0.3s ease;
-}
-.contact-info-item .social-links a:hover{
-    color: var(--white);
-    background-color: var(--black);
-}
+                        <!--Portfolio Item 5 Start-->
+                        <div class="portfolio-item">
+                            <div class="portfolio-item-thumbnail">
+                                <img src="biosengine.jpeg" alt="biosengine">
+                            </div>
+                            <h2 style="margin-top: 2px ;" class="portfolio-item-description">Bios Engine</h2>
+                            <h3 style="margin-top: 2px ;" class="portfolio-item-title">Win Analyser</h3>
+                            <button type="button" class="btn view-project-btn">View Project</button>
+                            <div class="portfolio-item-details">
+                                <div class="description">
+                                    <p>Predicting a players perfoence in upcoming matches based on a number of factors like previous performance, home ground advantage etc.</p>
+                                </div>
+                                <div class="general-info">
+                                    <ul>
+                                        <li>Created On - <span>29th October 2022</span></li>
+                                        <li>Technologies Used - <span>Python, JuputerNotebook, Pandas, Seaborn, Tensorflow, Keras</span></li>
+                                        <li>View Repository - <span><a href="https://github.com/TheCleverIdiott/AI-Score-Predictor" target="_blank">biosengine.com</a></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Portfolio Item 5 End-->
 
-/* footer */
-.footer{
-    align-items: center;
-}
-.footer .footer-text{
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.footer .footer-text span{
-    padding-top: 30px;
-    align-items: center;
-}
+                        <!--Portfolio Item 6 Start-->
+                        <div class="portfolio-item">
+                            <div class="portfolio-item-thumbnail">
+                                <img src="pygame_luffy.png" alt="luffy">
+                            </div>
+                            <h2 style="margin-top: 2px ;" class="portfolio-item-description">Luffy Wars</h2>
+                            <h3 style="margin-top: 2px ;" class="portfolio-item-title">A PC based interactive pygame</h3>
+                            <button type="button" class="btn view-project-btn">View Project</button>
+                            <div class="portfolio-item-details">
+                                <div class="description">
+                                    <p><b>Not Supported on mobile. Run on browser only.</b></p>
+                                    <p>An interactive game made using the pygame library in python.</p>
+                                </div>
+                                <div class="general-info">
+                                    <ul>
+                                        <li>Created On - <span>29th January 2023</span></li>
+                                        <li>Technologies Used - <span>Pyhton, Pygame, Replit</span></li>
+                                        <li>Live Demo - <span><a href=https://replit.com/@TheCleverIdiot/Luffy-Wars" target="_blank">luffywars.com</a></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Portfolio Item 6 End-->                        
 
-/*responsive*/
-@media(max-width:991px){
-    .container{
-        padding: 0;
-    }
-    .home-text,
-    .home-img{
-        width: 100%;
-    }
-    .home-text{
-        text-align: center;
-    }
-    .home-img{
-        order: -1;
-    }
-    .home-img .img-box{
-        max-width: 300px;
-    }
-    .home-text .btn{
-        margin: 0 7px 15px;
-    }
-    .portfolio-item{
-        width: calc(50% - 30px);
-    }
-    .pp-inner{
-        padding: 30px 15px;
-    }
-    .contact-info{
-        order: -1;
-        margin-bottom: 15px;
-    }
-}
-@media(max-width:767px){
-    .contact-form,
-    .contact-info,
-    .about-img,
-    .about-text{
-        width: 100%;
-    }
-    .about-text{
-        margin-top: 30px;
-    }
-    .portfolio-item{
-        width: calc(100% - 30px);
-    }
-    .pp-inner{
-        padding: 30px 15px;
-    }
-    .contact-info{
-        order: -1;
-        margin-bottom: 15px;
-    }
-    .contact-info-item{
-        padding: 0;
-    }
-    
-}
-@media(max-width:575px){
-    .section-title h2,
-    .header .nav-inner ul li a{
-        font-size: 35px;
-    }
-    .home-text h1{
-        font-size: 30px;
-    }
-    .home-text h2{
-        font-size: 18px;
-    }
-}
+                        <!--Portfolio Item 7 Start-->
+                        <div class="portfolio-item">
+                            <div class="portfolio-item-thumbnail">
+                                <img src="gesture-logo.jpeg" alt="gesture">
+                            </div>
+                            <h2 style="margin-top: 2px ;" class="portfolio-item-description">Paralinguistic</h2>
+                            <h3 style="margin-top: 2px ;" class="portfolio-item-title">Gesture Recognition System</h3>
+                            <button type="button" class="btn view-project-btn">View Project</button>
+                            <div class="portfolio-item-details">
+                                <div class="description">
+                                    <p>Remove the need of a touchsceen or a mouse, directly control your PC with hand gestures.</p>
+                                </div>
+                                <div class="general-info">
+                                    <ul>
+                                        <li>Created On - <span>6th April 2022</span></li>
+                                        <li>Technologies Used - <span>Python, JuputerNotebook, OpenCV, Pandas, Seaborn, Tensorflow, Keras</span></li>
+                                        <li>View Repository - <span><a href="https://github.com/TheCleverIdiott/Hand_Gesture_Recognition" target="_blank">nextgensystems.com</a></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Portfolio Item 7 End-->                        
+                        
+                        <!--Portfolio Item 8 Start-->
+                        <div class="portfolio-item">
+                            <div class="portfolio-item-thumbnail">
+                                <img src="https://images.techhive.com/images/article/2015/06/laser_projected_mouse-100588323-primary.idge.jpg?auto=webp&quality=85,70" alt="Senmeter">
+                            </div>
+                            <h2 style="margin-top: 2px ;" class="portfolio-item-description">VCursor</h2>
+                            <h3 style="margin-top: 2px ;" class="portfolio-item-title">Virtual Mouse</h3>
+                            <button type="button" class="btn view-project-btn">View Project</button>
+                            <div class="portfolio-item-details">
+                                <div class="description">
+                                    <p>Eliminating the need of hardware components from your PC by using a virtual mouse.</p>
+                                </div>
+                                <div class="general-info">
+                                    <ul>
+                                        <li>Created On - <span>11th January 2022</span></li>
+                                        <li>Technologies Used - <span>Python, JuputerNotebook, Pandas, Wordblob, Seaborn, Tensorflow, Keras</span></li>
+                                        <li>View Repository - <span><a href="https://github.com/TheCleverIdiott/Mouse_Tracker" target="_blank">vmouse.com</a></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Portfolio Item 8 End-->
+
+                        <!--Portfolio Item 9 Start-->
+                        <div class="portfolio-item">
+                            <div class="portfolio-item-thumbnail">
+                                <img src="linear regression score.png" alt="Regression Predictor">
+                            </div>
+                            <h2 style="margin-top: 2px ;" class="portfolio-item-description">Clairvoyant</h2>
+                            <h3 style="margin-top: 2px ;" class="portfolio-item-title">Result Predictor</h3>
+                            <button type="button" class="btn view-project-btn">View Project</button>
+                            <div class="portfolio-item-details">
+                                <div class="description">
+                                    <p>Predicting the score of a student based on the number of hours spent on studying using linear regression.</p>
+                                </div>
+                                <div class="general-info">
+                                    <ul>
+                                        <li>Created On - <span>15th February 2022</span></li>
+                                        <li>Technologies Used - <span>Python, JuputerNotebook, Pandas, Tensorflow, Scikit Learn</span></li>
+                                        <li>View Repository - <span><a href="https://github.com/TheCleverIdiott/Regression_Predictor" target="_blank">resultpredictor.com</a></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Portfolio Item 9 End--> 
+
+                        <!--Portfolio Item 10 Start-->
+                        <div class="portfolio-item">
+                            <div class="portfolio-item-thumbnail">
+                                <img src="hospital.png" alt="medicio">
+                            </div>
+                            <h2 style="margin-top: 2px ;" class="portfolio-item-description">Meditech</h2>
+                            <h3 style="margin-top: 2px ;" class="portfolio-item-title">Sample Website for a Hospital</h3>
+                            <button type="button" class="btn view-project-btn">View Project</button>
+                            <div class="portfolio-item-details">
+                                <div class="description">
+                                    <p>A sample, working and responsive website for a hospital with tons of features.</p>
+                                </div>
+                                <div class="general-info">
+                                    <ul>
+                                        <li>Created On - <span>1st December 2022</span></li>
+                                        <li>Technologies Used - <span>HTML, CSS, JavaScript, Php</span></li>
+                                        <li>View Project - <span><a href="https://thecleveridiott.github.io/hospital.github.io/" target="_blank">hospital_name.com</a></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Portfolio Item 10 End-->
+
+                        <!--Portfolio Item 11 Start-->
+                        <div class="portfolio-item">
+                            <div class="portfolio-item-thumbnail">
+                                <img src="portfolio sample.png" alt="Portfolio Website">
+                            </div>
+                            <h2 style="margin-top: 2px ;" class="portfolio-item-description">Portfolio</h2>
+                            <h3 style="margin-top: 2px ;" class="portfolio-item-title">Portfolio Website</h3>
+                            <button type="button" class="btn view-project-btn">View Project</button>
+                            <div class="portfolio-item-details">
+                                <div class="description">
+                                    <p>A sample responsive portfolio website.</p>
+                                </div>
+                                <div class="general-info">
+                                    <ul>
+                                        <li>Created On - <span>29th October 2022</span></li>
+                                        <li>Technologies Used - <span>HTML, CSS, JavaScript</span></li>
+                                        <li>View Project - <span><a href="https://yellowobelisk.github.io/" target="_blank">yellowobelisk.github.io</a></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Portfolio Item 11 End-->
+
+                    </div>
+                </div>
+            </section>
+            <!--Portfolio Section end-->
+
+            <!--Contact Section Start-->
+            <section class="contact-section sec-padding" id="contact">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title">
+                            <h2>Contact Me</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="contact-form">
+                            <form action="https://formspree.io/f/xzbwllqw" method="POST">
+                                <div class="row">
+                                    <div class="input-group">
+                                        <input type="text" placeholder="Name" class="input-control" name="name" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="text" placeholder="Email" class="input-control" name="email" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="text" placeholder="Subject" class="input-control" name="subject" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <textarea placeholder="Message" class="input-control" name="message" required></textarea>
+                                    </div>
+                                    <div class="submit-btn">
+                                        <button type="submit" class="btn">Send Message</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-info-item">
+                                <h3>Email</h3>
+                                <p>aritrag1905@gmail.com</p>
+                            </div>
+                            <div class="contact-info-item">
+                                <h3>Address</h3>
+                                <p>Shyambazar, Kolkata, West Bengal, India</p>
+                            </div>
+                            <div class="contact-info-item">
+                                <h3>Follow Me</h3>
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/aritraghosh1905/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                                    <a href="https://github.com/TheCleverIdiott" target="_blank"><i class="fab fa-github"></i></a>
+                                    <a href="https://twitter.com/AritraG_?t=d9VGV6i6XvkN2XAbL32r4g&s=09" target="_blank"><i class="fab fa-twitter"></i></a>
+                                    <a href="https://the-clever-idiot.medium.com/" target="_blank"><i class="fab fa-medium"></i></a>
+                                </div>
+                                <br>
+                                <br>
+                                <a href="https://www.fiverr.com/aritrag" target="_blank" class="btn link-item">Hire Me</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--Contact Section Start-->
+        </div>
+        <!--Main End-->
+
+        <!--portfolio item details popup start-->
+        <div class="portfolio-popup">
+            <div class="pp-inner">
+                <div class="pp-content">
+                    <div class="pp-header">
+                        <button type="button" class="btn pp-close"><i class="fas fa-times"></i></button>
+                        <div class="pp-thumbnail">
+                            <img src="senmeterlogo.jpeg" alt="pp-thumbnail">
+                        </div>
+                        <h3></h3>
+                    </div>
+                    <div class="pp-body">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--portfolio item details popup end-->
+
+        <footer class="footer">
+            <div class="footer-text">
+                <span class="far fa-copyright"> Aritra Ghosh | 2022 All rights reserved</span>
+            </div>
+        </footer>
+
+        <script src="script.js"></script>
+        <script> 
+            document.addEventListener('contextmenu', event=> event.preventDefault()); 
+            document.onkeydown = function(e) { 
+            if(event.keyCode == 123) { 
+            return false; 
+            } 
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){ 
+            return false; 
+            } 
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){ 
+            return false; 
+            } 
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){ 
+            return false; 
+            } 
+            } 
+            </script>
+    </body>
+</html>
